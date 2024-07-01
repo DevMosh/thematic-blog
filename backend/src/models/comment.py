@@ -1,7 +1,7 @@
 from django.db import models
 
-from backend.config import settings
-from backend.general_layout.models.abs_comment import CommentAbs
+from config import settings
+from general_layout.models.abs_comment import CommentAbs
 
 
 class Comment(CommentAbs):
@@ -27,6 +27,7 @@ class CommentLike(models.Model):
     )
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
+        null=True,
         on_delete=models.SET_NULL
     )
 

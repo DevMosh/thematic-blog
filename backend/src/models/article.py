@@ -1,6 +1,7 @@
 from django.db import models
 
-from backend.general_layout.models.abs_artilce import ArticleAbs
+from config import settings
+from general_layout.models.abs_artilce import ArticleAbs
 
 
 class Category(models.Model):
@@ -18,6 +19,23 @@ class Article(ArticleAbs):
 
     category = models.ForeignKey(
         Category,
-        on_delete=models.SET_NULL
+        on_delete=models.SET_NULL,
+        null=True,
     )
 
+
+class ArticleFavorites(models.Model):
+    class Meta:
+        verbose_name = "Избранная статья"
+        verbose_name_plural = "Избранные статьи"
+
+    article = models.ForeignKey(
+        Article,
+        on_delete=models.CASCADE,
+        verbose_name="Статья"
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        verbose_name="Пользователь"
+    )

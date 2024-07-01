@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ["*"]
 
 MY_APPS = [
     "users",
+    "src"
 ]
 
 INSTALLED_APPS = [
