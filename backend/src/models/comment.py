@@ -1,7 +1,7 @@
 from django.db import models
 
 from config import settings
-from general_layout.models.abs_comment import CommentAbs
+from general_layout.models.abs_comment import CommentAbs, CommentReplyAbs
 
 
 class Comment(CommentAbs):
@@ -32,3 +32,18 @@ class CommentLike(models.Model):
     )
 
 
+class CommentReply(CommentReplyAbs):
+    class Meta:
+        verbose_name = "Ответ"
+        verbose_name_plural = "Ответы"
+
+    comment = models.ForeignKey(
+        Comment,
+        related_name="комментарий",
+        on_delete=models.CASCADE,
+        null=False
+    )
+    author = models.ForeignKey(settings.AUTH_USER_MODEL,
+                               on_delete=models.SET_NULL,
+                               null=True
+                               )
