@@ -43,7 +43,8 @@ class CommentReply(CommentReplyAbs):
         on_delete=models.CASCADE,
         null=False
     )
-    author = models.ForeignKey(settings.AUTH_USER_MODEL,
-                               on_delete=models.SET_NULL,
-                               null=True
-                               )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True
+    )

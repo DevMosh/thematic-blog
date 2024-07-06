@@ -23,5 +23,8 @@ class ArticleAbs(models.Model):
         verbose_name="Контент",
         null=False
     )
-    count_like = models.IntegerField(default=0)
+    count_like = models.IntegerField(
+        default=0,
+        null=False, blank=True
+    )
 

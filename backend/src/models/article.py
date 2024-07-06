@@ -11,6 +11,9 @@ class Category(models.Model):
 
     name = models.CharField(max_length=256, null=False)
 
+    def __str__(self):
+        return self.name
+
 
 class Article(ArticleAbs):
     class Meta:
